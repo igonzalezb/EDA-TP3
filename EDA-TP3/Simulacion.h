@@ -5,16 +5,16 @@
 #include "Piso.h"
 #include "Graphics.h"
 
-class simulacion
+class Simulacion
 {
 
 private:
 	unsigned int robotCount;
 	unsigned long ticks;
-	piso p;
+	Piso p;
 	Robot *r;						//arreglo de clases de robot
 	bool wantToGraphic;
-	graphics *graph;
+	Graphics *graph;
 
 public:
 
@@ -27,7 +27,7 @@ public:
 	void stopGraphing();
 	bool amIgraphing();
 
-	simulacion(unsigned int robotCount, unsigned int width, unsigned int height, graphics* g = NULL);		//Dos constructores distintos uno con los tres primeros y otro con todos
+	Simulacion(unsigned int robotCount, unsigned int width, unsigned int height, Graphics* g = NULL);		//Dos constructores distintos uno con los tres primeros y otro con todos
 
 };
 
