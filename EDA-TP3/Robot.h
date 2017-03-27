@@ -1,3 +1,6 @@
+#ifndef _ROBOT_H
+#define _ROBOT_H
+
 #include <stdlib.h>
 #include "Point.h"
 
@@ -27,3 +30,5 @@ public:
 	double getX();
 	double getY();
 };
+
+#endif // !_ROBOT_H

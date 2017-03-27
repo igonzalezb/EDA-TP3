@@ -146,13 +146,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Piso.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Robot.cpp" />
+    <ClCompile Include="Simulacion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Piso.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Robot.h" />
+    <ClInclude Include="Simulacion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
