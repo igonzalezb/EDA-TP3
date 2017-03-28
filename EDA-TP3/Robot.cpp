@@ -3,6 +3,11 @@
 #include <time.h>
 #include <stdlib.h>
 
+Robot::Robot()
+{
+	return;
+}
+
 Robot::Robot(unsigned int w, unsigned int h)
 {
 	Point p;

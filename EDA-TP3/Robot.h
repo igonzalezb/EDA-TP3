@@ -18,6 +18,8 @@ public:
 	void moveRobot();
 	//Setea el parametro "stepDistance". Si stepDist es mayor a la distancia del centro del piso a un extremo, devuelve 0 y no asigna
 	int setStepDistance(float stepDist);
+	//Constructor por defecto.
+	Robot();
 	//El siguiente contructor Robot inicializa el robot en un punto aleatorio 
 	Robot(unsigned int w, unsigned int h);
 	//Setea "angle" en un angulo aleatorio
