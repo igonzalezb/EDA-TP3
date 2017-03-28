@@ -8,17 +8,26 @@ class Graphics
 {
 private:
 
+	
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_DISPLAY_MODE dispData;
 	ALLEGRO_BITMAP  *robotImg = NULL;
+	ALLEGRO_BITMAP *baldosaImg = NULL;
+	ALLEGRO_BITMAP *baldosaSuciaImg = NULL;
+	unsigned int width;
+	unsigned int height;
+	float xRes;
+	float yRes;
 
+	void createDisplay();
+	void loadImages();
 
 public:
 	
 	Graphics();
-	Graphics();
-	bool createDisplay();
-	void graphFloor();
+	Graphics(unsigned int xMax, unsigned int yMax);
+
+	void graphFloor(bool state);
 	void graphRobots();
 
 };
