@@ -20,17 +20,27 @@ Robot::Robot(unsigned int w, unsigned int h)
 void Robot::moveRobotToPoint(const Point& p)
 {
 	robotPoint.setPoint(p.getX, p.getY);
-
 	return;
 }
 
 void Robot::moveRobot()
 {
+	//Inicializo un punto auxiliar en el puto a donde deberia moverse el robot.
 	Point auxPoint(robotPoint.getX, robotPoint.getY);
 	auxPoint.translatePoint(stepDistance, angle);
-	if(auxPoint.getX < 0 || auxPoint.getX > xMax ||)
-	robotPoint.translatePoint(stepDistance, angle);
-	return;
+	//Verifico si el punto se encuentra dentro del "rectangulo" del piso.
+	if (auxPoint.getX < 0 || auxPoint.getX > xMax || auxPoint.getY < 0 || auxPoint.getY > yMax)
+	{
+		//Si no se encuentra en el rectangulo del piso, seteo angulo aleatorio
+		setRandAngle;
+		return;
+	}
+	else
+	{
+		//Si el punto es valido (dentro del rectuangulo) translado el robot.
+		robotPoint.translatePoint(stepDistance, angle);
+		return;
+	}
 }
 
 double Robot::getX()
