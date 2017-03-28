@@ -4,10 +4,15 @@
 
 class Graphics
 {
+private:
+	unsigned int w;
+	unsigned int h;
+
+
+
 public:
 	Graphics();
 
-private:
 
 };
 

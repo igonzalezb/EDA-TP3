@@ -1,3 +1,6 @@
+#ifndef _SIMULACION_H
+#define _SIMULACION_H
+
 #include "Piso.h"
 #include "Robot.h"
 #include "Graphics.h"
@@ -24,5 +27,9 @@ public:
 	void stopGraphing();
 	bool amIgraphing();
 	Simulacion(unsigned int robotCount, unsigned int width, unsigned int height, Graphics* g = NULL);		//Dos constructores distintos uno con los tres primeros y otro con todos
-
 };
+#endif // !_SIMULACION_H
+
+
+
+
