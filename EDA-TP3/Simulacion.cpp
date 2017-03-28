@@ -10,12 +10,7 @@ bool Simulacion::nextSimulationStep()
 	if (floor.isDirty)
 	{
 		ticks++;
-	}
-
-	for (i = 0; i < robotCount; i++)
-	{
-		//antes de mover cada robot, pregunta si el piso esta sucio
-		if (floor.isDirty)
+		for (i = 0; i < robotCount; i++)
 		{
 			//mueve el siguiente robot
 			robot[i].moveRobot;
@@ -25,15 +20,13 @@ bool Simulacion::nextSimulationStep()
 				floor.cleanTile((unsigned int)robot[i].getX, (unsigned int)robot[i].getY);
 			}
 		}
-		else
-		{
-			//Si el piso esta limpio, devuelve true para indicar que finaliza la simulacion.
-			return true;
-		}
+		return false;
 	}
-	//Si el piso sigue sucio al moverse el ultimo robot, devuelve false para indicar que
-	//se debe seguir limpiano
-	return false;
+	else
+	{
+		//Si el piso esta limpio devuelve TRUE
+		return true;
+	}
 
 }
 
