@@ -79,7 +79,7 @@ int main (int argc, char* argv[])
 	al_configuration_end();
 
 //===========================================================================================================
-/*
+
 
 	////////////////
 
@@ -126,9 +126,17 @@ int main (int argc, char* argv[])
 	//simulacion s1(1,5,5);
 	//simulacion s2(1,5,5, &graphics);
 	///////////////////////////////////////////////
-*/
+
 	return 0;
 }
+
+
+
+
+
+
+
+
 
 
 int allegro_setup(void)

@@ -175,6 +175,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Callback.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piso.cpp" />
@@ -189,6 +190,7 @@
     <Image Include="resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Callback.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Piso.h" />
     <ClInclude Include="Point.h" />
