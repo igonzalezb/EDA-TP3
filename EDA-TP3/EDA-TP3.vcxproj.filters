@@ -33,6 +33,9 @@
     <ClCompile Include="Simulacion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Callback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -56,6 +59,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Simulacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Callback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
