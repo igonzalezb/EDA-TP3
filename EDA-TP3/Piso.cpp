@@ -1,5 +1,10 @@
 #include "Piso.h"
 
+Piso::Piso()
+{
+	return;
+}
+
 Piso::Piso(unsigned int width, unsigned int height)
 {
 	int i;

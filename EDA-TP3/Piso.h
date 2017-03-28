@@ -9,6 +9,7 @@ private:
 
 public:
 
+	Piso();
 	Piso(unsigned int width, unsigned int height);
 	//devuelve TRUE si esta sucio, FALSE si esta limpio
 	bool isDirty();									
