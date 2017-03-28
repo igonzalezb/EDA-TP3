@@ -10,8 +10,10 @@ private:
 public:
 
 	Piso(unsigned int width, unsigned int height);
-	bool isDirty();									//devuelve si esta limpio o sucio
+	//devuelve TRUE si esta sucio, FALSE si esta limpio
+	bool isDirty();									
 	void cleanTile(unsigned int x, unsigned int y);
+	//getTileState devuelve TRUE si esta limpio, FALSE si esta sucio
 	bool getTileState(unsigned int x, unsigned int y);
 	unsigned int getW();
 	unsigned int getH();
