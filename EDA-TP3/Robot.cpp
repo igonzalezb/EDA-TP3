@@ -26,6 +26,9 @@ void Robot::moveRobotToPoint(const Point& p)
 
 void Robot::moveRobot()
 {
+	Point auxPoint(robotPoint.getX, robotPoint.getY);
+	auxPoint.translatePoint(stepDistance, angle);
+	if(auxPoint.getX < 0 || auxPoint.getX > xMax ||)
 	robotPoint.translatePoint(stepDistance, angle);
 	return;
 }

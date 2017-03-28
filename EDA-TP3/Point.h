@@ -1,6 +1,3 @@
-#ifndef _POINT_H
-#define	_POINT_H
-
 #define E 0.0000001
 
 class Point
@@ -25,6 +22,4 @@ public:
 	Point();
 	//El siguiente constructor inicializa x = xCord, y = yCord;
 	Point(double xCord, double yCord);
-};
-#endif // !_POINT_H
-
+	};

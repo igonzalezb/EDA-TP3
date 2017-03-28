@@ -1,30 +1,19 @@
-#ifndef _PISO_H
-#define _PISO_H
-
-#define SCREEN_W 800
-#define SCREEN_H 600
-
 class Piso
 {
-
 private:
-	bool * baldo;
-	unsigned int ancho;
-	unsigned int alto;
+
+	bool **baldo;
+	unsigned int w;
+	unsigned int h;
+	void setFloorDirty();	//Setea TODO el piso en SUCIO
 
 public:
 
-
-	Piso(unsigned int ancho, unsigned int alto);
-	bool isDirty();						//devuelve si esta limpio o sucio
-	bool cleanTile(unsigned int x, unsigned int y);
+	Piso(unsigned int width, unsigned int height);
+	bool isDirty();									//devuelve si esta limpio o sucio
+	void cleanTile(unsigned int x, unsigned int y);
 	bool getTileState(unsigned int x, unsigned int y);
-	bool isValid();						//dice si baldose da NULL
-
-
+	unsigned int getW();
+	unsigned int getH();
+	bool isValid();		//dice si baldose da NULL}
 };
-
-
-
-#endif // !_PISO_H
-

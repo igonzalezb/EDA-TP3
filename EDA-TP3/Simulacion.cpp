@@ -1,58 +1,57 @@
-
 #include "Simulacion.h"
 
-
-Simulacion::Simulacion(unsigned int robot, unsigned int w, unsigned int h, Graphics* = NULL)
+bool Simulacion::nextSimulationStep()
 {
-	r = new Robot(w, h)[rc];
-	p = new Piso(w, h);
+	int r;
 
-
-	//Obj* array = new Obj[size]; for (int i = 0; i < size; i++) { array[i] = Obj(whatever); }
-
-	if (p.isValid() && (r != NULL))
+	if (floor.isDirty)
 	{
+		for (r = 0; r < robotCount; r++)
+		{
 
+		}
 	}
-
-	else
-	{
-		delete r[];
-		p.destroy();
-	}
-
 }
 
-bool Simulacion::nextSimulationStep()	//if finished -> true
-{
-
-}
 unsigned long Simulacion::getTicks()
 {
 	return ticks;
 }
+
 unsigned int Simulacion::getRobotCount()
 {
 	return robotCount;
 }
+
 unsigned int Simulacion::getFloorWidth()
 {
-	return p.ancho;
-
+	return floor.getW;
 }
+
 unsigned int Simulacion::getFloorHeight()
 {
-	return p.altura;
+	return floor.getH;
 }
-void Simulacion::startGraphing()
-{
 
-}
-void Simulacion::stopGraphing()
+Simulacion::Simulacion(unsigned int robotNumber, unsigned int width, unsigned int height, Graphics *g = NULL)
 {
+	int i;
 
-}
-bool Simulacion::amIgraphing()
-{
-	return wantToGraphic;	//???
+	Piso floor(width, height);
+
+	robotCount = robotNumber;
+	robot = new Robot[robotCount];
+	for (i = 0; i < robotCount; i++)
+	{
+		robot[i] = Robot(width, height);
+	}
+	if (g == NULL)
+	{
+		wantToGraphic = false;
+	}
+	else
+	{
+		wantToGraphic = true;
+	}
+	return;
 }

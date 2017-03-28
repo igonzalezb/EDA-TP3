@@ -1,20 +1,17 @@
-#ifndef _SIMULACION_H
-#define _SIMULACION_H
-
-#include "Robot.h"
 #include "Piso.h"
+#include "Robot.h"
 #include "Graphics.h"
 
 class Simulacion
 {
-
 private:
+
 	unsigned int robotCount;
 	unsigned long ticks;
-	Piso p;
-	Robot *r;						//arreglo de clases de robot
-	bool wantToGraphic;
+	Piso floor;
+	Robot *robot;
 	Graphics *graph;
+	bool wantToGraphic;
 
 public:
 
@@ -29,7 +26,3 @@ public:
 	Simulacion(unsigned int robotCount, unsigned int width, unsigned int height, Graphics* g = NULL);		//Dos constructores distintos uno con los tres primeros y otro con todos
 
 };
-
-
-#endif // !_SIMULACION_H
-
