@@ -1,4 +1,6 @@
 #include <iostream>
+#include <time.h>
+#include "Simulacion.h"
 
 
 void graf ()
@@ -21,10 +23,10 @@ int main (int argc, char* argv[])
 
 	if (modo == 1)
 	{
-		simulacion s(a.robot, a.ancho, a.alto, &g);	//A=Argumentos
+		Simulacion s(a.robot, a.ancho, a.alto, &g);	//A=Argumentos
 		s.startGraphing();
 		while(!s.nextSimulationStep());
-		cout << "tardo " << s.getTicksCount() << endl;
+		cout << "tardo " << s.getTicks() << endl;
 		s.destroy();
 	}
 
@@ -38,7 +40,7 @@ int main (int argc, char* argv[])
 
 			for(int ciclos = 0; ciclos < 1000; ciclos++)
 			{
-				simulacion S(robs, arg_ancho, arg_largo);
+				Simulacion S(robs, arg_ancho, arg_largo);
 				while(!S.nextSimulationStep());
 				meanTicks[robs-1] += getTicksCount();
 				s.destroy();
@@ -54,7 +56,7 @@ int main (int argc, char* argv[])
 
 
 	////////////////////////////////////////////
-	graphics g(???);
+	Graphics g(???);
 	simulacion s1(1,5,5);
 	simulacion s2(1,5,5, &graphics);
 	/////////////////////////////////////////////

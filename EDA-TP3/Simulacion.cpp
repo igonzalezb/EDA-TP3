@@ -29,19 +29,20 @@ bool Simulacion::nextSimulationStep()	//if finished -> true
 }
 unsigned long Simulacion::getTicks()
 {
-
+	return ticks;
 }
 unsigned int Simulacion::getRobotCount()
 {
-
+	return robotCount;
 }
 unsigned int Simulacion::getFloorWidth()
 {
+	return p.ancho;
 
 }
 unsigned int Simulacion::getFloorHeight()
 {
-
+	return p.altura;
 }
 void Simulacion::startGraphing()
 {
@@ -53,5 +54,5 @@ void Simulacion::stopGraphing()
 }
 bool Simulacion::amIgraphing()
 {
-
+	return wantToGraphic;	//???
 }
