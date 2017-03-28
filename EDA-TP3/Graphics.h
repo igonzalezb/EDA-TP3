@@ -19,6 +19,7 @@ private:
 	float xRes;
 	float yRes;
 
+
 	void createDisplay();
 	void loadImages();
 
@@ -27,7 +28,9 @@ public:
 	Graphics();
 	Graphics(unsigned int xMax, unsigned int yMax);
 
-	void graphFloor(bool state);
+	//Para graficar el piso hay que tener en cuenta la cantidad de cuadrados que se van a dibujar verticlamente
+	//y horizontalmente para darles formato CUADRADO
+	void graphFloor(bool *floor);
 	void graphRobots();
 
 };

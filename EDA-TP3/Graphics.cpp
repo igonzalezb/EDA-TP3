@@ -3,8 +3,6 @@
 
 Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 {
-	
-
 	width = xMax;
 	height = yMax;
 	
@@ -32,3 +30,4 @@ void Graphics::createDisplay()
 	display = al_create_display(dispData.width, dispData.height);
 	return;
 }
+
