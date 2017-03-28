@@ -4,6 +4,7 @@
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_color.h>
+#include <allegro5\allegro_image.h>
 
 #define ERROR		-1
 #define SCREEN_W	800
@@ -34,12 +35,25 @@ int main (int argc, char* argv[])
 
 //============================================================================================================
 	ALLEGRO_DISPLAY * display = NULL;
+	ALLEGRO_DISPLAY_MODE disp_data;
+	int min_w, min_h, max_w, max_h;
+
+
 	ALLEGRO_BITMAP *icon = NULL;
+	
 
 	if (allegro_setup() == ERROR)
 	{
 		printf("Failed to configure and start the simulation");
 	}
+
+	//al_get_display_mode(al_get_num_display_modes() - 1, &disp_data);
+
+	//al_set_new_display_flags(ALLEGRO_MAXIMIZED);
+	//display = al_create_display(disp_data.width, disp_data.height);
+
+	//al_get_window_constraints(display, &min_w, &min_h, &max_w, &max_h);
+	//al_set_window_constraints(display, min_w, min_h, max_w, max_h);
 
 	display = al_create_display(SCREEN_W, SCREEN_H);
 	if (!display) {
@@ -61,11 +75,11 @@ int main (int argc, char* argv[])
 
 	al_clear_to_color(al_color_name("white"));
 	al_flip_display();
-	al_rest(2.0);
+	al_rest(5.0);
 	al_configuration_end();
 
 //===========================================================================================================
-
+/*
 
 	////////////////
 
@@ -112,7 +126,7 @@ int main (int argc, char* argv[])
 	//simulacion s1(1,5,5);
 	//simulacion s2(1,5,5, &graphics);
 	///////////////////////////////////////////////
-
+*/
 	return 0;
 }
 
@@ -134,6 +148,12 @@ int allegro_setup(void)
 
 		return ERROR;
 	}
+	if (!al_init_image_addon()) {
+		fprintf(stderr, "Failed to initialize image addon !\n");
+		al_shutdown_primitives_addon();
+		al_uninstall_system();
+		return ERROR;
+	}
 
 	return 0;
 }
@@ -143,6 +163,8 @@ void al_configuration_end(void)
 	al_uninstall_system();
 
 	al_shutdown_primitives_addon();
+
+	al_shutdown_image_addon();
 
 
 }
