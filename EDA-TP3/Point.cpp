@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <math.h>
+#define PI 3.1415
 
 Point::Point()
 {
@@ -38,8 +39,8 @@ double Point::getAngleBetweenPoints(Point p)
 
 void Point::translatePoint(double distance, double angle)
 {
-	x += distance*sin(angle);
-	y += distance*cos(angle);
+	x += distance*sin(angle * PI / 180);
+	y += distance*cos(angle * PI / 180);
 }
 
 bool Point::isPointEqual(Point p)

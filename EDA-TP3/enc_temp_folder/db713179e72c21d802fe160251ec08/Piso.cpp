@@ -13,11 +13,11 @@ Piso::Piso(unsigned int width, unsigned int height)
 	h = height;
 
 	//Se reserva la memoria para la matriz de baldozas que componen el piso
-	baldo = new bool *[h];
-	for (unsigned int i = 0; i < h; i++)
-	{
-		baldo[i] = new bool[w];
-	}
+	baldo = new bool [h * w];
+	//for (unsigned int i = 0; i < h; i++)
+	//{
+	//	baldo[i] = new bool[w];
+	//}
 
 	setFloorDirty();
 
@@ -26,31 +26,26 @@ Piso::Piso(unsigned int width, unsigned int height)
 
 void Piso::setFloorDirty()
 {
-	for (unsigned int i = 0; i < w; i++)
+	for (unsigned int i = 0; i < w * h; i++)
 	{
-		for (unsigned int j = 0; j < h; j++)
-		{
-			baldo[i][j] = false;
-		}
+		baldo[i] = false;
 	}
 	return;
 }
 
 bool Piso::getTileState(unsigned int x, unsigned int y)
 {
-	return baldo[x][y];
+	return baldo[w * y +x];
 }
 
 bool Piso::isDirty()
 {
-	for (unsigned int i = 0; i < w; i++)
+	unsigned int i, j;
+	for (i = 0; i < w * h; i++)
 	{
-		for (unsigned int j = 0; j < h; j++)
+		if (baldo[i])
 		{
-			if (baldo[i][j])
-			{
-				return false;
-			}
+			return false;
 		}
 	}
 	return true;
@@ -58,7 +53,7 @@ bool Piso::isDirty()
 
 void Piso::cleanTile(unsigned int x, unsigned int y)
 {
-	baldo[x][y] = true;
+	baldo[w * y + x] = true;
 }
 
 unsigned int Piso::getH()

@@ -9,6 +9,7 @@ Robot::Robot(unsigned int w, unsigned int h)
 {
 	Point p;
 
+	stepDistance = 1;
 	srand(time(NULL));
 	xMax = w;	//setea xMax
 	yMax = h;	//setea yMax
@@ -31,7 +32,7 @@ void Robot::moveRobot()
 	Point auxPoint(robotPoint.getX(), robotPoint.getY());
 	auxPoint.translatePoint(stepDistance, angle);
 	//Verifico si el punto se encuentra dentro del "rectangulo" del piso.
-	if (auxPoint.getX() < 0 || auxPoint.getX() > xMax || auxPoint.getY() < 0 || auxPoint.getY() > yMax)
+	if ((auxPoint.getX() < 0 || auxPoint.getX() > xMax) || (auxPoint.getY() < 0 || auxPoint.getY() > yMax))
 	{
 		//Si no se encuentra en el rectangulo del piso, seteo angulo aleatorio
 		setRandAngle();
