@@ -48,78 +48,72 @@ int main (int argc, char* argv[])
 	//inicializo allegro
 
 //============================================================================================================
-	ALLEGRO_DISPLAY * display = NULL;
-	//ALLEGRO_DISPLAY_MODE disp_data;
-	
-	ALLEGRO_BITMAP *icon = NULL;
-	ALLEGRO_BITMAP *img1 = NULL;
-	ALLEGRO_BITMAP *img2 = NULL;
-	
-	
+	//ALLEGRO_DISPLAY * display = NULL;
+	////ALLEGRO_DISPLAY_MODE disp_data;
+	//
+	//ALLEGRO_BITMAP *icon = NULL;
+	//ALLEGRO_BITMAP *img1 = NULL;
+	//ALLEGRO_BITMAP *img2 = NULL;
+	//
+	//
 
 	if (allegro_setup() == ERROR)
 	{
 		printf("Failed to configure and start the simulation");
 	}
 
-	display = al_create_display(SCREEN_W, SCREEN_H);
-	if (!display) {
-		fprintf(stderr, "Failed to create display!\n");
-		al_configuration_end();
-		return ERROR;
-	}
-	icon = al_load_bitmap("resources/icon.png");
-	if (!icon) {
-		fprintf(stderr, "Failed to create icon!\n");
-		al_destroy_display(display);
-		al_configuration_end();
-		return ERROR;
-	}
+	//display = al_create_display(SCREEN_W, SCREEN_H);
+	//if (!display) {
+	//	fprintf(stderr, "Failed to create display!\n");
+	//	al_configuration_end();
+	//	return ERROR;
+	//}
+	//icon = al_load_bitmap("resources/icon.png");
+	//if (!icon) {
+	//	fprintf(stderr, "Failed to create icon!\n");
+	//	al_destroy_display(display);
+	//	al_configuration_end();
+	//	return ERROR;
+	//}
 
 
-	al_set_display_icon(display, icon);
-	al_set_window_title(display, "R2D2_CLEANER");
+	//al_set_display_icon(display, icon);
+	//al_set_window_title(display, "R2D2_CLEANER");
 
-	img1 = al_load_bitmap("resources/img1.png");
-	if (!img1) {
-		fprintf(stderr, "Failed to create img1!\n");
-		al_destroy_display(display);
-		al_configuration_end();
-		return ERROR;
-	}
-	img2 = al_load_bitmap("resources/img2.jpg");
-	if (!img2) {
-		fprintf(stderr, "Failed to create img2!\n");
-		al_destroy_display(display);
-		al_configuration_end();
-		return ERROR;
-	}
+	//img1 = al_load_bitmap("resources/img1.png");
+	//if (!img1) {
+	//	fprintf(stderr, "Failed to create img1!\n");
+	//	al_destroy_display(display);
+	//	al_configuration_end();
+	//	return ERROR;
+	//}
+	//img2 = al_load_bitmap("resources/img2.jpg");
+	//if (!img2) {
+	//	fprintf(stderr, "Failed to create img2!\n");
+	//	al_destroy_display(display);
+	//	al_configuration_end();
+	//	return ERROR;
+	//}
 
 
-	al_clear_to_color(al_color_name("black"));
-	al_draw_scaled_bitmap(img1, 0.0, 0.0, al_get_bitmap_width(img1), al_get_bitmap_height(img1), 0.0, 0.0, al_get_display_width(display), al_get_display_height(display), 0);
-	al_flip_display();
-	al_rest(1.5);
+	//al_clear_to_color(al_color_name("black"));
+	//al_draw_scaled_bitmap(img1, 0.0, 0.0, al_get_bitmap_width(img1), al_get_bitmap_height(img1), 0.0, 0.0, al_get_display_width(display), al_get_display_height(display), 0);
+	//al_flip_display();
+	//al_rest(1.5);
 
-	for (int i = 1; i > 0 && (al_get_bitmap_width(img2) > 1000); i++)
-	{
-		al_clear_to_color(al_color_name("black"));
-		al_draw_scaled_bitmap(img2, 0.0, 0.0, al_get_bitmap_width(img2), al_get_bitmap_height(img2), 0.0, 0.0, al_get_bitmap_width(img2)/i, al_get_bitmap_height(img2)/i, 0);
-		al_rest(0.2);
-		al_flip_display();
-	}
+	//for (int i = 1; i > 0 && (al_get_bitmap_width(img2) > 1000); i++)
+	//{
+	//	al_clear_to_color(al_color_name("black"));
+	//	al_draw_scaled_bitmap(img2, 0.0, 0.0, al_get_bitmap_width(img2), al_get_bitmap_height(img2), 0.0, 0.0, al_get_bitmap_width(img2)/i, al_get_bitmap_height(img2)/i, 0);
+	//	al_rest(0.2);
+	//	al_flip_display();
+	//}
 
 	//al_flip_display();
-	
-	
 
 //===========================================================================================================
-/*
 
-	////////////////
-
-	srand(time(NULL));		//en otro lado
-	int modo;
+	Graphics g(userData.w, userData.h);
 
 	if (userData.modo == 1)
 	{
@@ -127,7 +121,7 @@ int main (int argc, char* argv[])
 		s.startGraphing();
 		while(!s.nextSimulationStep());
 		cout << "tardo " << s.getTicks() << endl;
-		s.destroy();
+		s.destroySimulation();
 	}
 
 	else if (userData.modo == 2)
@@ -136,7 +130,7 @@ int main (int argc, char* argv[])
 		double meanTicks[100];
 		for (int i = 0; i < 100; i++) { meanTicks[i] = 0; }
 
-		for (int robs=1; (robs<100) && (n y n+1 sean mayor de...0.1); robs++)
+		for (int robs = 1; (robs < 100) && (meanTicks[robs] - meanTicks[robs - 1]) > 0.1; robs++)
 		{
 
 			for(int ciclos = 0; ciclos < 1000; ciclos++)
@@ -144,17 +138,16 @@ int main (int argc, char* argv[])
 				Simulacion S(userData.cantRobots, userData.w, userData.h);
 				while(!S.nextSimulationStep());
 				meanTicks[robs-1] += S.getTicks();
-				S.destroy();
+				S.destroySimulation();
 			}
 
 		meanTicks[robs-1] /= 1000.0;
-		graficoParcial(meanTicks);
+		//graficoParcial(meanTicks);
 
 		}
 	}
-*/
-	
 	al_configuration_end();
+	getchar();
 	return 0;
 }
 

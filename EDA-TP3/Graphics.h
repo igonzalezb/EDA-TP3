@@ -1,15 +1,16 @@
 #ifndef _GRAPHICS_H
 #define _GRAPHICS_H
 
+#include <stdio.h>
 #include <allegro5\allegro.h>
+#include <allegro5\display.h>
+#include <allegro5\allegro_image.h>
 #include "Robot.h"
 #include "Piso.h"
-
 
 class Graphics
 {
 private:
-
 	
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_DISPLAY_MODE dispData;
