@@ -1,3 +1,7 @@
+extern "C" 
+{
+	#include "parseCmdLine.h"
+}
 #include <iostream>
 #include <time.h>
 #include "Simulacion.h"
