@@ -41,11 +41,19 @@ bool Simulacion::nextSimulationStep()
 				floor.cleanTile((unsigned int)robot[i].getX(), (unsigned int)robot[i].getY());
 			}
 		}
+		//LLama a graficar el estado de la simulacion si wantToGraphic = true
+		if (wantToGraphic)
+		{
+			(*graph).graphFloor(floor);
+			(*graph).graphRobots(robot, robotCount);
+		}
 		return false;
 	}
 	else
 	{
 		//Si el piso esta limpio devuelve TRUE
+		al_rest(5);	//Para ver el piso limpio
+		destroySimulation();
 		return true;
 	}
 
@@ -88,3 +96,8 @@ unsigned int Simulacion::getFloorHeight()
 	return floor.getH();
 }
 
+void Simulacion::destroySimulation()
+{
+	(*graph).destroyGraphics();
+	return;
+}
