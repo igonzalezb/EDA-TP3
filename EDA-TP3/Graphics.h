@@ -3,6 +3,8 @@
 
 #include <allegro5\allegro.h>
 #include "Robot.h"
+#include "Piso.h"
+
 
 class Graphics
 {
@@ -27,11 +29,9 @@ public:
 	
 	Graphics();
 	Graphics(unsigned int xMax, unsigned int yMax);
-	//Para graficar el piso hay que tener en cuenta la cantidad de cuadrados que se van a dibujar verticlamente
-	//y horizontalmente para darles formato CUADRADO
-
-	//void graphFloor(bool *floor);
-	
+	void graphFloor(Piso piso);
+	void graphRobots(Robot *robot, unsigned int robotCount);
+	void destroyGraphics();
 
 };
 

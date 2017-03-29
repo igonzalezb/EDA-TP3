@@ -30,6 +30,7 @@ public:
 	void startGraphing();
 	void stopGraphing();
 	bool amIgraphing();
+	void destroySimulation();
 };
 #endif // !_SIMULACION_H
 

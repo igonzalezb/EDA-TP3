@@ -47,3 +47,39 @@ void Graphics::loadImages()
 	return;
 }
 
+void Graphics::graphFloor(Piso piso)
+{
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			if (piso.getTileState(i, j))
+			{
+				al_draw_scaled_bitmap(baldosaImg, 0, 0, al_get_bitmap_width(baldosaImg), al_get_bitmap_height(baldosaImg), i / xRes, j / yRes, 1 / xRes, 1 / yRes, 0);
+			}
+			else
+			{
+				al_draw_scaled_bitmap(baldosaSuciaImg, 0, 0, al_get_bitmap_width(baldosaSuciaImg), al_get_bitmap_height(baldosaSuciaImg), i / xRes, j / yRes, 1 / xRes, 1 / yRes, 0);
+			}
+		}
+	}
+	return;
+}
+
+void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
+{
+	for (int i = 0; i < robotCount; i++)
+	{
+		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX + 0.5) / xRes, (robot[i].getY + 0.5) / yRes, 1 / xRes, 1 / yRes, 0);
+	}
+	return;
+}
+
+void Graphics::destroyGraphics()
+{
+	al_destroy_bitmap(baldosaImg);
+	al_destroy_bitmap(baldosaSuciaImg);
+	al_destroy_bitmap(robotImg);
+	al_destroy_display(display);
+	return;
+}
