@@ -52,6 +52,7 @@ int main (int argc, char* argv[])
 		return ERROR;
 	}
 
+
 	//valido parametros
 
 	//inicializo allegro

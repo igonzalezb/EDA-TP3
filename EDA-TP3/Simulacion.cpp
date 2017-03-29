@@ -14,10 +14,11 @@ Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned in
 	{
 		robot[i] = Robot(width, height);
 	}
-
+	if (g != NULL)
+	{
+		graph = g;
+	}
 }
-
-
 
 
 bool Simulacion::nextSimulationStep()
@@ -48,6 +49,23 @@ bool Simulacion::nextSimulationStep()
 		return true;
 	}
 
+}
+
+void Simulacion::startGraphing()
+{
+	wantToGraphic = true;
+	return;
+}
+
+void Simulacion::stopGraphing()
+{
+	wantToGraphic = false;
+	return;
+}
+
+bool Simulacion::amIgraphing()
+{
+	return wantToGraphic;
 }
 
 unsigned long Simulacion::getTicks()

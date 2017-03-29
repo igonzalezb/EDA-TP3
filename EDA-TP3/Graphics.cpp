@@ -1,5 +1,6 @@
 #include "Graphics.h"
 
+Graphics::Graphics() {}
 
 Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 {

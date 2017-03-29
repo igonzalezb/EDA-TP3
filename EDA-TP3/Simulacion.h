@@ -27,9 +27,9 @@ public:
 	unsigned int getRobotCount();
 	unsigned int getFloorWidth();
 	unsigned int getFloorHeight();
-	/*void startGraphing();
+	void startGraphing();
 	void stopGraphing();
-	bool amIgraphing();*/
+	bool amIgraphing();
 };
 #endif // !_SIMULACION_H
 
