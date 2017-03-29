@@ -1,7 +1,7 @@
 #include "Simulacion.h"
 
 
-Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned int height, Graphics *g = NULL)
+Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned int height, Graphics *g)
 {
 	unsigned int i;
 
