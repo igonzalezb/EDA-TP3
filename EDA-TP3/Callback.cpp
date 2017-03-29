@@ -23,6 +23,7 @@ int Callback(char * Key, char* Value, void * Data)
 		{
 			if (strcmp(key_min, "modo") == false && ((parametros_t *)Data)->init_modo == false)
 			{
+				for (int i = 0; i < MAX_STRING; i++) { key_min[i] = NULL; }
 				if (AllMin(Value, key_min))
 				{
 					if (strcmp(key_min, "1") == false)
