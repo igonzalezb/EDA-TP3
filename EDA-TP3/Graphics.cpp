@@ -49,9 +49,9 @@ void Graphics::loadImages()
 
 void Graphics::graphFloor(Piso piso)
 {
-	for (unsigned int i = 0; i < width; i++)
+	for (int i = 0; i < width; i++)
 	{
-		for (unsigned int j = 0; j < height; j++)
+		for (int j = 0; j < height; j++)
 		{
 			if (piso.getTileState(i, j))
 			{
@@ -63,14 +63,16 @@ void Graphics::graphFloor(Piso piso)
 			}
 		}
 	}
+	al_flip_display();
 	return;
 }
 
 void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 {
-	for (unsigned int i = 0; i < robotCount; i++)
+	for (int i = 0; i < robotCount; i++)
 	{
-		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() + 0.5) / xRes, (robot[i].getY() + 0.5) / yRes, 1 / xRes, 1 / yRes, 0);
+		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX + 0.5) / xRes, (robot[i].getY + 0.5) / yRes, 1 / xRes, 1 / yRes, 0);
+		al_flip_display();
 	}
 	return;
 }
