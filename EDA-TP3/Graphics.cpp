@@ -17,13 +17,13 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	if (relation > screenRelation)
 	{
 		altoPantalla = dispData.height;
-		anchoPantalla = altoPantalla * (width / height);
+		anchoPantalla = altoPantalla * ((double)width / (double)height);
 	}
 	//Si la relacion del piso es menor a la del display, ajusta el alto del display
 	else
 	{
 		anchoPantalla = dispData.width;
-		altoPantalla = anchoPantalla * (height / width);
+		altoPantalla = anchoPantalla * ((double)height / (double)width);
 	}
 	//Crea el display y lo inicializa en negro
 	display = al_create_display(anchoPantalla, altoPantalla);
