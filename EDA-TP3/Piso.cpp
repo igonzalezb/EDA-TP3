@@ -12,8 +12,8 @@ Piso::Piso(unsigned int width, unsigned int height)
 	h = height;
 
 	//Se reserva la memoria para la matriz de baldozas que componen el piso
-	baldo = new bool *[h];
-	for (i = 0; i < w; i++)
+	baldo = new bool*[h];
+	for (unsigned int i = 0; i < h; i++)
 	{
 		baldo[i] = new bool[w];
 	}
@@ -25,10 +25,9 @@ Piso::Piso(unsigned int width, unsigned int height)
 
 void Piso::setFloorDirty()
 {
-	unsigned int i, j;
-	for (i = 0; i < w; i++)
+	for (unsigned int i = 0; i < w; i++)
 	{
-		for (j = 0; j < h; j++)
+		for (unsigned int j = 0; j < h; j++)
 		{
 			baldo[i][j] = false;
 		}

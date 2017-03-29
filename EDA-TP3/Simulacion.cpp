@@ -20,7 +20,6 @@ Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned in
 	}
 }
 
-
 bool Simulacion::nextSimulationStep()
 {
 	unsigned int i;
