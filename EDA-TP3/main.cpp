@@ -6,6 +6,7 @@ extern "C"
 #include <time.h>
 #include "Simulacion.h"
 #include "Callback.h"
+#include "Graphics.h"
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_color.h>
@@ -115,7 +116,7 @@ int main (int argc, char* argv[])
 
 	Graphics g(userData.w, userData.h);
 
-	if (userData.modo == 1)
+	if (userData.modo == MODO1)
 	{
 		Simulacion s(userData.cantRobots, userData.w, userData.h, &g);	//A=Argumentos
 		s.startGraphing();
@@ -124,7 +125,7 @@ int main (int argc, char* argv[])
 		s.destroySimulation();
 	}
 
-	else if (userData.modo == 2)
+	else if (userData.modo == MODO2)
 	{
 		
 		double meanTicks[100];
