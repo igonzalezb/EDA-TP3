@@ -21,19 +21,11 @@ typedef int(*pCallback) (char *, char*, void *);
 
 using namespace std;
 
-//void graf ()
-//{
-//	al_draw_bitmap(roboImg, 
-//				(r[0].getX()) * tamaño X de Baldosa,
-//				(r[0].getY()) * tamaño Y de Baldosa);
-//}
-
 
 
 int main (int argc, char* argv[])
 {
 	pCallback p = &Callback;
-
 	parametros_t userData;
 
 	userData.init_modo = false;
@@ -53,34 +45,22 @@ int main (int argc, char* argv[])
 	}
 
 
-	//valido parametros
-
 	//inicializo allegro
-
-
-/*
 
 //============================================================================================================
 	ALLEGRO_DISPLAY * display = NULL;
-	ALLEGRO_DISPLAY_MODE disp_data;
-	int min_w, min_h, max_w, max_h;
-
-
+	//ALLEGRO_DISPLAY_MODE disp_data;
+	
 	ALLEGRO_BITMAP *icon = NULL;
+	ALLEGRO_BITMAP *img1 = NULL;
+	ALLEGRO_BITMAP *img2 = NULL;
+	
 	
 
 	if (allegro_setup() == ERROR)
 	{
 		printf("Failed to configure and start the simulation");
 	}
-
-	//al_get_display_mode(al_get_num_display_modes() - 1, &disp_data);
-
-	//al_set_new_display_flags(ALLEGRO_MAXIMIZED);
-	//display = al_create_display(disp_data.width, disp_data.height);
-
-	//al_get_window_constraints(display, &min_w, &min_h, &max_w, &max_h);
-	//al_set_window_constraints(display, min_w, min_h, max_w, max_h);
 
 	display = al_create_display(SCREEN_W, SCREEN_H);
 	if (!display) {
@@ -98,31 +78,59 @@ int main (int argc, char* argv[])
 
 
 	al_set_display_icon(display, icon);
-	al_set_window_title(display, "ROBOT_CLEANER");
+	al_set_window_title(display, "R2D2_CLEANER");
 
-	al_clear_to_color(al_color_name("white"));
+	img1 = al_load_bitmap("resources/img1.png");
+	if (!img1) {
+		fprintf(stderr, "Failed to create img1!\n");
+		al_destroy_display(display);
+		al_configuration_end();
+		return ERROR;
+	}
+	img2 = al_load_bitmap("resources/img2.jpg");
+	if (!img2) {
+		fprintf(stderr, "Failed to create img2!\n");
+		al_destroy_display(display);
+		al_configuration_end();
+		return ERROR;
+	}
+
+
+	al_clear_to_color(al_color_name("black"));
+	al_draw_scaled_bitmap(img1, 0.0, 0.0, al_get_bitmap_width(img1), al_get_bitmap_height(img1), 0.0, 0.0, al_get_display_width(display), al_get_display_height(display), 0);
 	al_flip_display();
-	al_rest(5.0);
-	al_configuration_end();
+	al_rest(1.5);
+
+	for (int i = 1; i > 0 && (al_get_bitmap_width(img2) > 1000); i++)
+	{
+		al_clear_to_color(al_color_name("black"));
+		al_draw_scaled_bitmap(img2, 0.0, 0.0, al_get_bitmap_width(img2), al_get_bitmap_height(img2), 0.0, 0.0, al_get_bitmap_width(img2)/i, al_get_bitmap_height(img2)/i, 0);
+		al_rest(0.2);
+		al_flip_display();
+	}
+
+	//al_flip_display();
+	
+	
 
 //===========================================================================================================
-
+/*
 
 	////////////////
 
 	srand(time(NULL));		//en otro lado
 	int modo;
 
-	if (modo == 1)
+	if (userData.modo == 1)
 	{
-		Simulacion s(a.robot, a.ancho, a.alto, &g);	//A=Argumentos
+		Simulacion s(userData.cantRobots, userData.w, userData.h, &g);	//A=Argumentos
 		s.startGraphing();
 		while(!s.nextSimulationStep());
 		cout << "tardo " << s.getTicks() << endl;
 		s.destroy();
 	}
 
-	else if (modo == 2)
+	else if (userData.modo == 2)
 	{
 		
 		double meanTicks[100];
@@ -133,29 +141,20 @@ int main (int argc, char* argv[])
 
 			for(int ciclos = 0; ciclos < 1000; ciclos++)
 			{
-				Simulacion S(robs, arg_ancho, arg_largo);
+				Simulacion S(userData.cantRobots, userData.w, userData.h);
 				while(!S.nextSimulationStep());
-				meanTicks[robs-1] += getTicksCount();
-				s.destroy();
+				meanTicks[robs-1] += S.getTicks();
+				S.destroy();
 			}
 
-			meanTicks[robs-1] /= 1000.0;
-			graficoParcial(meanTicks);
+		meanTicks[robs-1] /= 1000.0;
+		graficoParcial(meanTicks);
 
 		}
 	}
-
-
-
-
-	//////////////////////////////////////////////
-	//Graphics g(???);
-	//simulacion s1(1,5,5);
-	//simulacion s2(1,5,5, &graphics);
-	///////////////////////////////////////////////
 */
 	
-
+	al_configuration_end();
 	return 0;
 }
 
