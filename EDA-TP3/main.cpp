@@ -5,6 +5,7 @@ extern "C"
 #include <iostream>
 #include <time.h>
 #include "Simulacion.h"
+#include "Callback.h"
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_color.h>
@@ -16,7 +17,7 @@ extern "C"
 
 int allegro_setup(void);
 void al_configuration_end(void);
-
+typedef int(*pCallback) (char *, char*, void *);
 
 using namespace std;
 
@@ -31,11 +32,32 @@ using namespace std;
 
 int main (int argc, char* argv[])
 {
+	pCallback p = &Callback;
+
+	parametros_t userData;
+
+	userData.init_modo = false;
+	userData.init_CantRobots = false;
+	userData.init_h = false;
+	userData.init_w = false;
 	
+	
+	if (parseCmdLine(argc, argv, p, &userData) == ERROR)
+	{
+		printf("PARSER ERROR\n");
+	}
+	if (validacionUsuario(userData) == ERROR)
+	{
+		printf("INPUT ERROR\n");
+		return ERROR;
+	}
+
 	//valido parametros
 
 	//inicializo allegro
 
+
+/*
 
 //============================================================================================================
 	ALLEGRO_DISPLAY * display = NULL;
@@ -130,6 +152,8 @@ int main (int argc, char* argv[])
 	//simulacion s1(1,5,5);
 	//simulacion s2(1,5,5, &graphics);
 	///////////////////////////////////////////////
+*/
+	
 
 	return 0;
 }

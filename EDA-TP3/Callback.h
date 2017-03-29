@@ -16,6 +16,7 @@ typedef struct {
 
 } parametros_t;
 int Callback(char * Key, char* Value, void * Data);
+int validacionUsuario(parametros_t p);
 
 
 #endif // _CALLBACK_H

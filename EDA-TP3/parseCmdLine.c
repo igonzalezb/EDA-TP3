@@ -15,7 +15,7 @@
 
 int parseCmdLine(int argc, char *argv[], pCallback p, void *userData)
 {
-	int i = 3, status=OK, parsedArgs = 0;				// i : indice para el arreglo de argumentos.
+	int i = 1, status=OK, parsedArgs = 0;				// i : indice para el arreglo de argumentos.
 	 								// status: flag de error.
 	 								// parsedArgs: contador de argumentos procesados.
 	 																	    
