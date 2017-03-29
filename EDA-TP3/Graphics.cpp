@@ -27,6 +27,10 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	}
 	//Crea el display y lo inicializa en negro
 	display = al_create_display(anchoPantalla, altoPantalla);
+	if (!display)
+	{
+		fprintf(stderr, "Falied to create display\n");
+	}
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_flip_display();
 	//Define las resoluciones de la pantalla
@@ -41,9 +45,22 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 
 void Graphics::loadImages()
 {
+	
 	robotImg = al_load_bitmap("resources/r2d2.png");
+	if (!robotImg)
+	{
+		fprintf(stderr, "Failed to load r2d2.png\n");
+	}
 	baldosaImg = al_load_bitmap("resources/baldosa.png");
+	if (!baldosaImg)
+	{
+		fprintf(stderr, "Failed to load baldosa.png\n");
+	}
 	baldosaSuciaImg = al_load_bitmap("resources/baldosa_sucia.png");
+	if (!baldosaSuciaImg)
+	{
+		fprintf(stderr, "Failed to load baldosa_sucia.png\n");
+	}
 	return;
 }
 
