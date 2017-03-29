@@ -1,6 +1,25 @@
 #include "Simulacion.h"
 #include "Graphics.h"
 
+
+Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned int height, Graphics *g)
+{
+	unsigned int i;
+
+	Piso floor(width, height);
+	robotCount = _robotCount;
+
+	robot = new Robot[robotCount];
+	for (i = 0; i < robotCount; i++)
+	{
+		robot[i] = Robot(width, height);
+	}
+
+}
+
+
+
+
 bool Simulacion::nextSimulationStep()
 {
 	unsigned int i;
@@ -51,26 +70,3 @@ unsigned int Simulacion::getFloorHeight()
 	return floor.getH();
 }
 
-Simulacion::Simulacion(unsigned int robotNumber, unsigned int width, unsigned int height, Graphics *g = NULL)
-{
-	unsigned int i;
-
-	Piso floor(width, height);
-	robotCount = robotNumber;
-
-	robot = new Robot[robotCount];
-	for (i = 0; i < robotCount; i++)
-	{
-		robot[i] = Robot(width, height);
-	}
-
-	if (g == NULL)
-	{
-		wantToGraphic = false;
-	}
-	else
-	{
-		wantToGraphic = true;
-	}
-	return;
-}
