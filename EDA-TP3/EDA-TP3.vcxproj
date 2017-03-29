@@ -178,6 +178,7 @@
     <ClCompile Include="Callback.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="parseCmdLine.c" />
     <ClCompile Include="Piso.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Robot.cpp" />
@@ -192,6 +193,7 @@
   <ItemGroup>
     <ClInclude Include="Callback.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="parseCmdLine.h" />
     <ClInclude Include="Piso.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Robot.h" />
