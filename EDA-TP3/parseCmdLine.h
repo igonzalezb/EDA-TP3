@@ -43,7 +43,6 @@
 #define PARSECMDLINE_H
 
 
-
 typedef int(*pCallback) (char *, char*, void *);
 /* 
  *  El callback que recibe el parser:
