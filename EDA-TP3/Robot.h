@@ -15,7 +15,7 @@ private:
 
 public:
 	//moveRobotToPoint mueve el robot hacia un punto p. Serviria para inicializar el robot
-	void moveRobotToPoint(const Point& p);
+	void moveRobotToPoint(Point& p);
 	//moveRobot toma la info(Angle y p) y mueve el robot al siguiente Punto
 	//toda la info esta contenida dentro de la clase una vez que se inicializo
 	void moveRobot();

@@ -7,7 +7,7 @@ Piso::Piso()
 
 Piso::Piso(unsigned int width, unsigned int height)
 {
-	int i;
+	unsigned int i;
 	w = width;
 	h = height;
 
@@ -18,14 +18,14 @@ Piso::Piso(unsigned int width, unsigned int height)
 		baldo[i] = new bool[w];
 	}
 
-	setFloorDirty;
+	setFloorDirty();
 
 	return;
 }
 
 void Piso::setFloorDirty()
 {
-	int i, j;
+	unsigned int i, j;
 	for (i = 0; i < w; i++)
 	{
 		for (j = 0; j < h; j++)
@@ -43,7 +43,7 @@ bool Piso::getTileState(unsigned int x, unsigned int y)
 
 bool Piso::isDirty()
 {
-	int i, j;
+	unsigned int i, j;
 	for (i = 0; i < w; i++)
 	{
 		for (j = 0; j < h; j++)

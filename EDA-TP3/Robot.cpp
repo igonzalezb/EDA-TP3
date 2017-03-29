@@ -12,29 +12,29 @@ Robot::Robot(unsigned int w, unsigned int h)
 	srand(time(NULL));
 	xMax = w;	//setea xMax
 	yMax = h;	//setea yMax
-	setRandAngle;	//setea random angle
+	setRandAngle();	//setea random angle
 	p.randomPoint(xMax, yMax);	//setea p random
 	moveRobotToPoint(p);	//setea robotPoint en punto random
 
 	return;
 }
 
-void Robot::moveRobotToPoint(const Point& p)
+void Robot::moveRobotToPoint(Point& p)
 {
-	robotPoint.setPoint(p.getX, p.getY);
+	robotPoint.setPoint(p.getX(), p.getY());
 	return;
 }
 
 void Robot::moveRobot()
 {
 	//Inicializo un punto auxiliar en el puto a donde deberia moverse el robot.
-	Point auxPoint(robotPoint.getX, robotPoint.getY);
+	Point auxPoint(robotPoint.getX(), robotPoint.getY());
 	auxPoint.translatePoint(stepDistance, angle);
 	//Verifico si el punto se encuentra dentro del "rectangulo" del piso.
-	if (auxPoint.getX < 0 || auxPoint.getX > xMax || auxPoint.getY < 0 || auxPoint.getY > yMax)
+	if (auxPoint.getX() < 0 || auxPoint.getX() > xMax || auxPoint.getY() < 0 || auxPoint.getY() > yMax)
 	{
 		//Si no se encuentra en el rectangulo del piso, seteo angulo aleatorio
-		setRandAngle;
+		setRandAngle();
 		return;
 	}
 	else
@@ -47,12 +47,12 @@ void Robot::moveRobot()
 
 double Robot::getX()
 {
-	return robotPoint.getX;
+	return robotPoint.getX();
 }
 
 double Robot::getY()
 {
-	return robotPoint.getY;
+	return robotPoint.getY();
 }
 
 int Robot::setAngle(float ang)

@@ -6,12 +6,12 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	width = xMax;
 	height = yMax;
 	
-	createDisplay;
+	createDisplay();
 	
 	xRes = width / dispData.width;
 	yRes = height / dispData.height;
 
-	loadImages;
+	loadImages();
 
 	return;
 }
