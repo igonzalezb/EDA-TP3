@@ -1,4 +1,5 @@
 #include "Simulacion.h"
+#include "Graphics.h"
 
 bool Simulacion::nextSimulationStep()
 {
