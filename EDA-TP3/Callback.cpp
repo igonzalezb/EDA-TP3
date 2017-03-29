@@ -23,22 +23,16 @@ int Callback(char * Key, char* Value, void * Data)
 		{
 			if (strcmp(key_min, "modo") == false && ((parametros_t *)Data)->init_modo == false)
 			{
-				if (AllMin(Value, key_min))
+				if (strcmp(Value, "1") == false)
 				{
-					if (strcmp(key_min, "1") == false)
-					{
-						((parametros_t *)Data)->modo = MODO1;
-						((parametros_t *)Data)->init_modo = true;
-					}
-					else if (strcmp(key_min, "2") == false)
-					{
-						((parametros_t *)Data)->modo = MODO2;
-						((parametros_t *)Data)->init_modo = true;
-					}
-
+					((parametros_t *)Data)->modo = MODO1;
+					((parametros_t *)Data)->init_modo = true;
 				}
-				else
-					return ERROR_CALLBACK;
+				else if (strcmp(Value, "2") == false)
+				{
+					((parametros_t *)Data)->modo = MODO2;
+					((parametros_t *)Data)->init_modo = true;
+				}
 			}
 
 			else if (strcmp(key_min, "ancho") == false && ((parametros_t *)Data)->init_w == false)
