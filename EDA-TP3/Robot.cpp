@@ -3,10 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-Robot::Robot()
-{
-	return;
-}
+Robot::Robot() {};
 
 Robot::Robot(unsigned int w, unsigned int h)
 {

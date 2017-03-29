@@ -55,13 +55,14 @@ Simulacion::Simulacion(unsigned int robotNumber, unsigned int width, unsigned in
 	int i;
 
 	Piso floor(width, height);
-
 	robotCount = robotNumber;
+
 	robot = new Robot[robotCount];
 	for (i = 0; i < robotCount; i++)
 	{
 		robot[i] = Robot(width, height);
 	}
+
 	if (g == NULL)
 	{
 		wantToGraphic = false;
