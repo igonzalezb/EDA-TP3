@@ -6,6 +6,8 @@
 #include <allegro5\display.h>
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_primitives.h>
+#include <allegro5\allegro_audio.h>
+#include <allegro5\allegro_acodec.h>
 #include "Robot.h"
 #include "Piso.h"
 
@@ -18,7 +20,10 @@ private:
 	ALLEGRO_BITMAP  *robotImg = NULL;
 	ALLEGRO_BITMAP *baldosaImg = NULL;
 	ALLEGRO_BITMAP *baldosaSuciaImg = NULL;
+	ALLEGRO_SAMPLE *sample = NULL;
 	ALLEGRO_BITMAP *icon = NULL;
+	ALLEGRO_BITMAP *img1 = NULL;
+
 	unsigned int width;
 	unsigned int height;
 

@@ -76,15 +76,24 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	
 	al_set_window_title(display, "R2D2_CLEANER");
 	
-	al_clear_to_color(al_map_rgb(0, 0, 0));
-	al_flip_display();
+	
 	//Define las resoluciones de la pantalla
 	xRes = (double)width / anchoPantalla;
 	yRes = (double)height / altoPantalla;
-
-	//Carga las imagenes
+	
+	//Carga las imagenes & sonidos
 	loadImages();
 	al_set_display_icon(display, icon);
+	al_draw_scaled_bitmap(img1, 0.0, 0.0, al_get_bitmap_width(img1), al_get_bitmap_height(img1), 0.0, 0.0, al_get_display_width(display), al_get_display_height(display), 0);
+	al_flip_display();
+	al_rest(1.5);
+
+	
+
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_flip_display();
+	al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+
 }
 
 void Graphics::loadImages()
@@ -108,6 +117,17 @@ void Graphics::loadImages()
 	icon = al_load_bitmap("resources/icon.png");
 	if (!icon) {
 		fprintf(stderr, "Failed to create icon!\n");
+	}
+	img1 = al_load_bitmap("resources/img1.png");
+	if (!baldosaImg)
+	{
+		fprintf(stderr, "Failed to load image\n");
+	}
+
+	sample = al_load_sample("resources/sample.wav");
+	if (!sample) {
+		fprintf(stderr, "Audio clip sample not loaded!\n");
+
 	}
 }
 
@@ -151,6 +171,8 @@ void Graphics::graphHistogram()
 
 void Graphics::destroyGraphics()
 {
+	al_stop_samples();
+	al_destroy_sample(sample);
 	al_destroy_display(display);
 	al_destroy_bitmap(baldosaImg);
 	al_destroy_bitmap(baldosaSuciaImg);
