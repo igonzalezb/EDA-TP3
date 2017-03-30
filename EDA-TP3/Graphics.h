@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <allegro5\allegro.h>
 #include <allegro5\display.h>
+#include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
 #include "Robot.h"
 #include "Piso.h"

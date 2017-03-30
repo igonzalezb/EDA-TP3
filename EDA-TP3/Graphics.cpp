@@ -80,7 +80,6 @@ void Graphics::graphFloor(Piso piso)
 			}
 		}
 	}
-	al_flip_display();
 	return;
 }
 
@@ -88,17 +87,19 @@ void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 {
 	for (unsigned int i = 0; i < robotCount; i++)
 	{
-		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() + 0.5) / xRes, (robot[i].getY() + 0.5) / yRes, 1 / xRes, 1 / yRes, 0);
+		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX()) / xRes, (robot[i].getY()) / yRes, 0.5 / xRes, 0.5 / yRes, 0);
 		al_flip_display();
 	}
+	al_rest(0.2);
 	return;
 }
 
 void Graphics::destroyGraphics()
 {
+	al_destroy_display(display);
 	al_destroy_bitmap(baldosaImg);
 	al_destroy_bitmap(baldosaSuciaImg);
 	al_destroy_bitmap(robotImg);
-	al_destroy_display(display);
+
 	return;
 }

@@ -1,16 +1,19 @@
 #include "Piso.h"
 #include <stdio.h>
 
-Piso::Piso()
-{
-	return;
-}
+bool **nastyGlobalPointer;
+unsigned int wp;
+unsigned int hp;
+
+
+Piso::Piso(){}
 
 Piso::Piso(unsigned int width, unsigned int height)
 {
-	unsigned int i;
 	w = width;
 	h = height;
+	wp = width;
+	hp = height;
 
 	//Se reserva la memoria para la matriz de baldozas que componen el piso
 	baldo = new bool *[h];
@@ -18,7 +21,7 @@ Piso::Piso(unsigned int width, unsigned int height)
 	{
 		baldo[i] = new bool[w];
 	}
-
+	nastyGlobalPointer = baldo;
 	setFloorDirty();
 
 	return;
@@ -38,16 +41,16 @@ void Piso::setFloorDirty()
 
 bool Piso::getTileState(unsigned int x, unsigned int y)
 {
-	return baldo[x][y];
+	return nastyGlobalPointer[x][y];
 }
 
 bool Piso::isDirty()
 {
-	for (unsigned int i = 0; i < w; i++)
+	for (unsigned int i = 0; i < wp; i++)
 	{
-		for (unsigned int j = 0; j < h; j++)
+		for (unsigned int j = 0; j < hp; j++)
 		{
-			if (baldo[i][j])
+			if (nastyGlobalPointer[i][j])
 			{
 				return false;
 			}
@@ -58,7 +61,7 @@ bool Piso::isDirty()
 
 void Piso::cleanTile(unsigned int x, unsigned int y)
 {
-	baldo[x][y] = true;
+	nastyGlobalPointer[x][y] = true;
 }
 
 unsigned int Piso::getH()
@@ -69,4 +72,16 @@ unsigned int Piso::getH()
 unsigned int Piso::getW()
 {
 	return w;
+}
+
+bool Piso::isValid()
+{
+	if (baldo == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }

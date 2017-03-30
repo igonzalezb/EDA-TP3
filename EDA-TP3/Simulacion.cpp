@@ -1,6 +1,6 @@
 #include "Simulacion.h"
 #include "Graphics.h"
-
+#include <stdio.h>
 
 Simulacion::Simulacion(unsigned int _robotCount, unsigned int width, unsigned int height, Graphics *g)
 {
@@ -30,6 +30,11 @@ bool Simulacion::nextSimulationStep()
 	if (floor.isDirty())
 	{
 		ticks++;
+		if (wantToGraphic)
+		{
+			(*graph).graphFloor(floor);
+			(*graph).graphRobots(robot, robotCount);
+		}
 		for (i = 0; i < robotCount; i++)
 		{
 			//mueve el siguiente robot
@@ -41,11 +46,12 @@ bool Simulacion::nextSimulationStep()
 			}
 		}
 		//LLama a graficar el estado de la simulacion si wantToGraphic = true
-		if (wantToGraphic)
-		{
-			(*graph).graphFloor(floor);
-			(*graph).graphRobots(robot, robotCount);
-		}
+		//if (wantToGraphic)
+		//{
+
+		//	(*graph).graphFloor(floor);
+		//	(*graph).graphRobots(robot, robotCount);
+		//}
 		return false;
 	}
 	else

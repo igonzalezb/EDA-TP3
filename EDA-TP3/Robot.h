@@ -31,6 +31,7 @@ public:
 	int setAngle(float ang);
 	double getX();
 	double getY();
+	double getAngle();
 };
 
 

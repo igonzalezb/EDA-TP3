@@ -71,8 +71,8 @@ int Robot::setAngle(float ang)
 
 void Robot::setRandAngle()
 {
-	srand(time(NULL));
-	angle = 360 * ((double)rand() / RAND_MAX);
+	//srand(time(NULL));
+	angle = rand() % 360;
 
 	return;
 }
@@ -88,4 +88,9 @@ int Robot::setStepDistance(float stepDist)
 	{
 		return 0;
 	}
+}
+
+double Robot::getAngle()
+{
+	return angle;
 }
