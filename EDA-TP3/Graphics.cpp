@@ -2,6 +2,35 @@
 
 Graphics::Graphics() {}
 
+Graphics::Graphics(unsigned int _robs, double * _meanTicks)
+{
+	double temp = 0;
+	robs = _robs;
+	meanTicks = new double[robs];
+	for (unsigned int i = 0; i < robs; i++)
+	{
+		meanTicks[i] = _meanTicks[i];
+		if (meanTicks[i] > temp)
+		{
+			temp = meanTicks[i];
+		}
+	}
+	width = robs;
+	height = temp + 2;
+	al_get_display_mode(al_get_num_display_modes() - 5, &dispData);
+	display = al_create_display(dispData.width, dispData.height);
+	if (!display)
+	{
+		fprintf(stderr, "Falied to create display\n");
+	}
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_flip_display();
+
+	xRes = (double)width / (double)dispData.width;
+	yRes = (double)height / (double)dispData.height;
+
+}
+
 Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 {
 	unsigned int anchoPantalla, altoPantalla;
@@ -93,6 +122,17 @@ void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 	return;
 }
 
+void Graphics::graphHistogram()
+{
+	for (unsigned int i = 0; i < robs; i++)
+	{
+		al_draw_filled_rectangle(i / xRes, (height - meanTicks[i]) / yRes, (i + 1) / xRes, height / yRes, al_map_rgb(255, 0, 0));
+		al_draw_rectangle(i / xRes, (height - meanTicks[i]) / yRes, (i + 1) / xRes, height / yRes, al_map_rgb(255, 255, 255), 2);
+		al_flip_display();
+		al_rest(0.1);
+	}
+}
+
 void Graphics::destroyGraphics()
 {
 	al_destroy_display(display);
@@ -102,3 +142,4 @@ void Graphics::destroyGraphics()
 
 	return;
 }
+

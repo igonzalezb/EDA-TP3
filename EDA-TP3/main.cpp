@@ -11,6 +11,8 @@ extern "C"
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_color.h>
 #include <allegro5\allegro_image.h>
+#include <allegro5\keyboard.h>
+#include <allegro5\events.h>
 
 #define ERROR		-1
 #define SCREEN_W	800
@@ -19,6 +21,7 @@ extern "C"
 int allegro_setup(void);
 void al_configuration_end(void);
 typedef int(*pCallback) (char *, char*, void *);
+void waitForKeypress();
 
 using namespace std;
 
@@ -114,14 +117,17 @@ int main (int argc, char* argv[])
 	//al_flip_display();
 
 //===========================================================================================================
+	
 
-	Graphics g(userData.w, userData.h);
 
+		
 	if (userData.modo == MODO1)
 	{
+		Graphics g(userData.w, userData.h);
 		Simulacion s(userData.cantRobots, userData.w, userData.h, &g);	//A=Argumentos
 		s.startGraphing();
 		while(!s.nextSimulationStep());
+		waitForKeypress();
 		cout << "tardo " << s.getTicks() << endl;
 		s.destroySimulation();
 	}
@@ -130,37 +136,46 @@ int main (int argc, char* argv[])
 	{
 		
 		double meanTicks[100];
+		unsigned int ticksCount;
 		for (int i = 0; i < 100; i++) { meanTicks[i] = 0; }
 
-		for (int robs = 1; (robs < 100) && (meanTicks[robs] - meanTicks[robs - 1]) > 0.1; robs++)
+		unsigned int robs = 1;
+		ticksCount = 0;
+		for (int ciclos = 0; ciclos < 1000; ciclos++)
 		{
-
-			for(int ciclos = 0; ciclos < 1000; ciclos++)
+			Simulacion S(robs, userData.w, userData.h, NULL);
+			while (!S.nextSimulationStep());
+			ticksCount += S.getTicks();
+			S.destroySimulation();
+		}
+		meanTicks[robs - 1] = (double)ticksCount / 1000.0;
+		cout << "ticks[" << robs << "] = " << ticksCount << endl;
+		cout << "meanTicks[" << robs << "] = " << meanTicks[robs - 1] << endl << endl;
+		do
+		{
+			robs++;
+			ticksCount = 0;
+			for (int ciclos = 0; ciclos < 1000; ciclos++)
 			{
-				Simulacion S(userData.cantRobots, userData.w, userData.h);
-				while(!S.nextSimulationStep());
-				meanTicks[robs-1] += S.getTicks();
+				Simulacion S(robs, userData.w, userData.h, NULL);
+				while (!S.nextSimulationStep());
+				ticksCount += S.getTicks();
 				S.destroySimulation();
 			}
+			meanTicks[robs - 1] = (double)ticksCount / 1000.0;
+			cout << "ticks[" << robs << "] = " << ticksCount << endl;
+			cout << "meanTicks[" << robs << "] = " << meanTicks[robs - 1] << endl;
+			cout << "dif = " << fabs(meanTicks[robs - 2] - meanTicks[robs - 1]) << endl << endl;
 
-		meanTicks[robs-1] /= 1000.0;
-		//graficoParcial(meanTicks);
-
-		}
+		} while ((robs < 100) && (fabs(meanTicks[robs - 2] - meanTicks[robs - 1]) > 0.1));
+		Graphics g2(robs, meanTicks);
+		g2.graphHistogram();
+		waitForKeypress();
+	
 	}
 	al_configuration_end();
-	getchar();
 	return 0;
 }
-
-
-
-
-
-
-
-
-
 
 int allegro_setup(void)
 {
@@ -197,5 +212,21 @@ void al_configuration_end(void)
 
 	al_shutdown_image_addon();
 
+}
 
+void waitForKeypress()
+{
+	ALLEGRO_EVENT_QUEUE *event_queue;
+	ALLEGRO_EVENT event;
+
+	al_install_keyboard();
+	event_queue = al_create_event_queue();
+	al_register_event_source(event_queue, al_get_keyboard_event_source());
+
+	do
+	{
+		al_wait_for_event(event_queue, &event);
+	} while (event.type != ALLEGRO_EVENT_KEY_DOWN);
+
+	al_destroy_event_queue(event_queue);
 }

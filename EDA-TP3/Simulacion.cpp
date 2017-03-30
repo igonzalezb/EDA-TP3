@@ -105,6 +105,8 @@ unsigned int Simulacion::getFloorHeight()
 
 void Simulacion::destroySimulation()
 {
-	(*graph).destroyGraphics();
-	return;
+	if (wantToGraphic)
+	{
+		(*graph).destroyGraphics();
+	}
 }

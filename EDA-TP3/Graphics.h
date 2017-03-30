@@ -6,6 +6,7 @@
 #include <allegro5\display.h>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
+#include <allegro5\allegro_primitives.h>
 #include "Robot.h"
 #include "Piso.h"
 
@@ -22,6 +23,9 @@ private:
 	unsigned int width;
 	unsigned int height;
 
+	unsigned int robs;
+	double *meanTicks;
+
 	float xRes;
 	float yRes;
 
@@ -30,9 +34,12 @@ private:
 public:
 	
 	Graphics();
+	Graphics(unsigned int _robs, double *_meanTicks);
 	Graphics(unsigned int xMax, unsigned int yMax);
+	Graphics(unsigned int _robs, float * _meanTicks);
 	void graphFloor(Piso& piso);
 	void graphRobots(Robot *robot, unsigned int robotCount);
+	void graphHistogram();
 	void destroyGraphics();
 
 };
