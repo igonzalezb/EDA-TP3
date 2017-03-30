@@ -9,7 +9,7 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	width = xMax;
 	height = yMax;
 	//Obtiene la info del display
-	al_get_display_mode(al_get_num_display_modes() - 1, &dispData);
+	al_get_display_mode(al_get_num_display_modes() - 5, &dispData);
 	//Calcula las relaciones de las dimensiones del piso y del display
 	relation = ((double)height / (double)width);
 	screenRelation = ((double)dispData.height / (double)dispData.width);
@@ -87,7 +87,7 @@ void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 {
 	for (unsigned int i = 0; i < robotCount; i++)
 	{
-		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() - 0.25) / xRes, (robot[i].getY() - 0.25) / yRes, 0.5 / xRes, 0.5 / yRes, 0);	
+		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() - 0.25) / xRes, (robot[i].getY() - 0.25) / yRes, 1.2 / xRes, 1.2 / yRes, 0);	
 	}
 	al_flip_display();
 	return;

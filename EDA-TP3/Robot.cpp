@@ -14,9 +14,8 @@ Robot::Robot(unsigned int w, unsigned int h)
 	xMax = w;	//setea xMax
 	yMax = h;	//setea yMax
 	setRandAngle();	//setea random angle
-	p.randomPoint(xMax, yMax);	//setea p random
-	moveRobotToPoint(p);	//setea robotPoint en punto random
-
+	setRandomPoint();
+	
 	return;
 }
 
@@ -44,6 +43,13 @@ void Robot::moveRobot()
 		robotPoint.translatePoint(stepDistance, angle);
 		return;
 	}
+}
+
+void Robot::setRandomPoint()
+{
+	Point auxPoint;
+	auxPoint.randomPoint(xMax, yMax);
+	moveRobotToPoint(auxPoint);
 }
 
 double Robot::getX()

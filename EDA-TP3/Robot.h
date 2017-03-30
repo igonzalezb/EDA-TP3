@@ -14,6 +14,7 @@ private:
 	unsigned int yMax;
 
 public:
+	void setRandomPoint();
 	//moveRobotToPoint mueve el robot hacia un punto p. Serviria para inicializar el robot
 	void moveRobotToPoint(Point& p);
 	//moveRobot toma la info(Angle y p) y mueve el robot al siguiente Punto
