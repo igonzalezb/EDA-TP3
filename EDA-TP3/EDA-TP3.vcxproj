@@ -189,9 +189,6 @@
     <ClCompile Include="Simulacion.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +199,9 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Robot.h" />
     <ClInclude Include="Simulacion.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
