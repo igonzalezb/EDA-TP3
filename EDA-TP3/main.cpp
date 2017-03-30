@@ -25,8 +25,6 @@ void waitForKeypress();
 
 using namespace std;
 
-
-
 int main (int argc, char* argv[])
 {
 	pCallback p = &Callback;

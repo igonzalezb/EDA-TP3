@@ -29,14 +29,12 @@ bool Simulacion::nextSimulationStep()
 	//un robot se va a mover (o cambiar el angulo)
 	if (wantToGraphic)
 	{
-
 		(*graph).graphFloor(floor);
 		(*graph).graphRobots(robot, robotCount);
 	}
 	if (floor.isDirty())
 	{
 		ticks++;
-
 		for (i = 0; i < robotCount; i++)
 		{
 			//Pregunta si la baldoza en la que se encuentra el robot esta sucia. Si esta sucia la limpia

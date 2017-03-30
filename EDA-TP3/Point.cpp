@@ -64,7 +64,6 @@ double Point::getY()
 
 void Point::randomPoint(unsigned int xMax, unsigned int yMax)
 {
-	/*srand(time(NULL));*/
 
 	x = rand() % xMax;
 	y = rand() % yMax;
