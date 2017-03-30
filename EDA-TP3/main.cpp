@@ -1,3 +1,34 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////														
+//
+//		Instituto Tecnológico de Buenos Aires.			
+//									   /////////////// 							
+//		22.08 - Algoritmos y Estructura de Datos.		  //  ROBOTS   //							
+//									 ///////////////							
+//		Trabajo Práctico n° 3.																		
+//																									
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////														
+//																										
+//																										
+//	Consigna: 																								
+//																									
+//	Se pide simular un robot limpia-pisos.						
+//																									
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																									
+//	GRUPO 4																							
+//																									
+//	***********************************************														
+//	||	AUTORES		        ||  LEGAJO   ||																	
+//	***********************************************														
+//	|| Álvarez, Lisandro		||  57.771   ||														
+//	|| Gonzalez Bigliardi, Iñaki    ||  57.098   ||														
+//	|| Navarro, Paulo		||  57.775   ||														
+//	***********************************************														
+//																									
+//	Fecha de entrega: jueves 30 de marzo de 2017.												
+//																									
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 extern "C" 
 {
 	#include "parseCmdLine.h"
@@ -28,7 +59,7 @@ int main (int argc, char* argv[])
 	pCallback p = &Callback;
 	parametros_t userData;
 
-	userData.init_modo = false;
+	userData.init_modo = false;		//Inicializo en falso
 	userData.init_CantRobots = false;
 	userData.init_h = false;
 	userData.init_w = false;
@@ -50,7 +81,7 @@ int main (int argc, char* argv[])
 	
 	if (allegro_setup() == ERROR)
 	{
-		printf("Failed to configure and start the simulation");
+		printf("Failed to configure the simulation");
 	}
 			
 	if (userData.modo == MODO1)
