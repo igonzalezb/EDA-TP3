@@ -27,38 +27,40 @@ bool Simulacion::nextSimulationStep()
 	//Al comenzar el "paso" de la simulacion pregunta si esta sucio.
 	//si el piso esta sucio incrementa el tick, pq quiere decir que al menos
 	//un robot se va a mover (o cambiar el angulo)
+	if (wantToGraphic)
+	{
+
+		(*graph).graphFloor(floor);
+		(*graph).graphRobots(robot, robotCount);
+	}
 	if (floor.isDirty())
 	{
 		ticks++;
-		if (wantToGraphic)
-		{
-			(*graph).graphFloor(floor);
-			(*graph).graphRobots(robot, robotCount);
-		}
+
 		for (i = 0; i < robotCount; i++)
 		{
-			//mueve el siguiente robot
-			robot[i].moveRobot();
 			//Pregunta si la baldoza en la que se encuentra el robot esta sucia. Si esta sucia la limpia
 			if (!(floor.getTileState((unsigned int)robot[i].getX(), (unsigned int)robot[i].getY())))
 			{
 				floor.cleanTile((unsigned int)robot[i].getX(), (unsigned int)robot[i].getY());
 			}
+			//mueve el siguiente robot
+			robot[i].moveRobot();
 		}
 		//LLama a graficar el estado de la simulacion si wantToGraphic = true
-		//if (wantToGraphic)
-		//{
+		if (wantToGraphic)
+		{
 
-		//	(*graph).graphFloor(floor);
-		//	(*graph).graphRobots(robot, robotCount);
-		//}
+			(*graph).graphFloor(floor);
+			(*graph).graphRobots(robot, robotCount);
+			al_rest(0.1);
+		}
 		return false;
 	}
 	else
 	{
 		//Si el piso esta limpio devuelve TRUE
-		al_rest(5);	//Para ver el piso limpio
-		destroySimulation();
+		/*destroySimulation();*/
 		return true;
 	}
 

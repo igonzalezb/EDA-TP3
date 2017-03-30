@@ -16,10 +16,10 @@ Piso::Piso(unsigned int width, unsigned int height)
 	hp = height;
 
 	//Se reserva la memoria para la matriz de baldozas que componen el piso
-	baldo = new bool *[h];
-	for (unsigned int i = 0; i < h; i++)
+	baldo = new bool *[w];
+	for (unsigned int i = 0; i < w; i++)
 	{
-		baldo[i] = new bool[w];
+		baldo[i] = new bool[h];
 	}
 	nastyGlobalPointer = baldo;
 	setFloorDirty();
@@ -50,13 +50,13 @@ bool Piso::isDirty()
 	{
 		for (unsigned int j = 0; j < hp; j++)
 		{
-			if (nastyGlobalPointer[i][j])
+			if (!nastyGlobalPointer[i][j])
 			{
-				return false;
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 
 void Piso::cleanTile(unsigned int x, unsigned int y)

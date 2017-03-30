@@ -64,7 +64,7 @@ void Graphics::loadImages()
 	return;
 }
 
-void Graphics::graphFloor(Piso piso)
+void Graphics::graphFloor(Piso& piso)
 {
 	for (unsigned int i = 0; i < width; i++)
 	{
@@ -87,10 +87,9 @@ void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 {
 	for (unsigned int i = 0; i < robotCount; i++)
 	{
-		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX()) / xRes, (robot[i].getY()) / yRes, 0.5 / xRes, 0.5 / yRes, 0);
-		al_flip_display();
+		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() - 0.25) / xRes, (robot[i].getY() - 0.25) / yRes, 0.5 / xRes, 0.5 / yRes, 0);	
 	}
-	al_rest(0.2);
+	al_flip_display();
 	return;
 }
 

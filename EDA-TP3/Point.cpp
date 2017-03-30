@@ -40,7 +40,7 @@ double Point::getAngleBetweenPoints(Point p)
 void Point::translatePoint(double distance, double angle)
 {
 	x += distance*sin(angle * PI / 180);
-	y += distance*cos(angle * PI / 180);
+	y -= distance*cos(angle * PI / 180);
 }
 
 bool Point::isPointEqual(Point p)
@@ -64,7 +64,7 @@ double Point::getY()
 
 void Point::randomPoint(unsigned int xMax, unsigned int yMax)
 {
-	//srand(time(NULL));
+	/*srand(time(NULL));*/
 
 	x = rand() % xMax;
 	y = rand() % yMax;

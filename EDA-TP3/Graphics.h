@@ -31,7 +31,7 @@ public:
 	
 	Graphics();
 	Graphics(unsigned int xMax, unsigned int yMax);
-	void graphFloor(Piso piso);
+	void graphFloor(Piso& piso);
 	void graphRobots(Robot *robot, unsigned int robotCount);
 	void destroyGraphics();
 
