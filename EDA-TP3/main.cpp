@@ -25,8 +25,12 @@
 //	|| Navarro, Paulo		||  57.775   ||														
 //	***********************************************														
 //																									
-//	Fecha de entrega: jueves 30 de marzo de 2017.												
-//																									
+//	Fecha de entrega: jueves 30 de marzo de 2017.
+//
+//
+//	GitHub:
+//		https://github.com/igonzalezb/EDA-TP3.git
+//
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 extern "C" 
