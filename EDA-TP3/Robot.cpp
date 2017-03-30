@@ -10,7 +10,7 @@ Robot::Robot(unsigned int w, unsigned int h)
 	Point p;
 
 	stepDistance = 1;
-	srand(time(NULL));
+	//srand(time(NULL));
 	xMax = w;	//setea xMax
 	yMax = h;	//setea yMax
 	setRandAngle();	//setea random angle

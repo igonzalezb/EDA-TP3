@@ -7,21 +7,24 @@ extern "C"
 #include "Simulacion.h"
 #include "Callback.h"
 #include "Graphics.h"
+
+
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_color.h>
 #include <allegro5\allegro_image.h>
 #include <allegro5\keyboard.h>
 #include <allegro5\events.h>
+#include <allegro5\allegro_font.h>
+#include <allegro5\allegro_ttf.h>
 
 #define ERROR		-1
-#define SCREEN_W	800
-#define SCREEN_H	600
 
 int allegro_setup(void);
 void al_configuration_end(void);
 typedef int(*pCallback) (char *, char*, void *);
 void waitForKeypress();
+void al_print_text(const char * text);
 
 using namespace std;
 
@@ -39,17 +42,17 @@ int main (int argc, char* argv[])
 	if (parseCmdLine(argc, argv, p, &userData) == ERROR)
 	{
 		printf("PARSER ERROR\n");
+		return ERROR;
 	}
-	if (validacionUsuario(userData) == ERROR)
+
+	if (validacionUsuario(userData) == 0)
 	{
 		printf("INPUT ERROR\n");
 		return ERROR;
 	}
 
 	srand(time(NULL));
-
-	//inicializo allegro
-
+	
 //============================================================================================================
 	//ALLEGRO_DISPLAY * display = NULL;
 	////ALLEGRO_DISPLAY_MODE disp_data;
@@ -126,7 +129,7 @@ int main (int argc, char* argv[])
 		s.startGraphing();
 		while(!s.nextSimulationStep());
 		waitForKeypress();
-		cout << "tardo " << s.getTicks() << endl;
+		cout << "Tardo: " << s.getTicks() << endl;
 		s.destroySimulation();
 	}
 
@@ -171,6 +174,8 @@ int main (int argc, char* argv[])
 		waitForKeypress();
 	
 	}
+	
+	
 	al_configuration_end();
 	return 0;
 }
@@ -199,6 +204,14 @@ int allegro_setup(void)
 		return ERROR;
 	}
 
+	al_install_keyboard();
+
+	al_init_font_addon();
+
+	al_init_ttf_addon();
+
+
+
 	return 0;
 }
 
@@ -210,16 +223,21 @@ void al_configuration_end(void)
 
 	al_shutdown_image_addon();
 
+	al_shutdown_font_addon();
+
 }
 
 void waitForKeypress()
 {
-	ALLEGRO_EVENT_QUEUE *event_queue;
+	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 	ALLEGRO_EVENT event;
-
-	al_install_keyboard();
+	
+	
 	event_queue = al_create_event_queue();
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
+	al_print_text("PRESS ANY KEY TO EXIT");
+	
+	//cout << "PRESS ANY KEY TO EXIT" << endl;
 
 	do
 	{
@@ -227,4 +245,18 @@ void waitForKeypress()
 	} while (event.type != ALLEGRO_EVENT_KEY_DOWN);
 
 	al_destroy_event_queue(event_queue);
+	
+
+}
+
+void al_print_text(const char * text)
+{
+	ALLEGRO_FONT *font = NULL;
+	font = al_load_font("resources/atari.ttf", 10, 0);
+	if (!font) {
+		fprintf(stderr, "Could not load 'atari.ttf'.\n");
+	}
+	al_draw_text(font, al_color_name("black"), 100, 100, 0, text);
+	al_flip_display();
+	//al_destroy_font(font);
 }

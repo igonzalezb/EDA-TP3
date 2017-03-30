@@ -17,12 +17,24 @@ Graphics::Graphics(unsigned int _robs, double * _meanTicks)
 	}
 	width = robs;
 	height = temp + 2;
+
 	al_get_display_mode(al_get_num_display_modes() - 5, &dispData);
+
 	display = al_create_display(dispData.width, dispData.height);
 	if (!display)
 	{
 		fprintf(stderr, "Falied to create display\n");
 	}
+
+	icon = al_load_bitmap("resources/icon.png");
+	if (!icon) {
+		fprintf(stderr, "Failed to create icon!\n");
+		al_destroy_display(display);
+	}
+
+
+	al_set_display_icon(display, icon);
+	al_set_window_title(display, "R2D2_CLEANER");
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_flip_display();
 
@@ -60,6 +72,10 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 	{
 		fprintf(stderr, "Falied to create display\n");
 	}
+	
+	
+	al_set_window_title(display, "R2D2_CLEANER");
+	
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_flip_display();
 	//Define las resoluciones de la pantalla
@@ -68,8 +84,7 @@ Graphics::Graphics(unsigned int xMax, unsigned int yMax)
 
 	//Carga las imagenes
 	loadImages();
-
-	return;
+	al_set_display_icon(display, icon);
 }
 
 void Graphics::loadImages()
@@ -90,7 +105,10 @@ void Graphics::loadImages()
 	{
 		fprintf(stderr, "Failed to load baldosa_sucia.png\n");
 	}
-	return;
+	icon = al_load_bitmap("resources/icon.png");
+	if (!icon) {
+		fprintf(stderr, "Failed to create icon!\n");
+	}
 }
 
 void Graphics::graphFloor(Piso& piso)
@@ -109,7 +127,6 @@ void Graphics::graphFloor(Piso& piso)
 			}
 		}
 	}
-	return;
 }
 
 void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
@@ -119,7 +136,6 @@ void Graphics::graphRobots(Robot *robot, unsigned int robotCount)
 		al_draw_scaled_bitmap(robotImg, 0, 0, al_get_bitmap_width(robotImg), al_get_bitmap_height(robotImg), (robot[i].getX() - 0.25) / xRes, (robot[i].getY() - 0.25) / yRes, 1.2 / xRes, 1.2 / yRes, 0);	
 	}
 	al_flip_display();
-	return;
 }
 
 void Graphics::graphHistogram()
@@ -139,7 +155,6 @@ void Graphics::destroyGraphics()
 	al_destroy_bitmap(baldosaImg);
 	al_destroy_bitmap(baldosaSuciaImg);
 	al_destroy_bitmap(robotImg);
-
-	return;
+	al_destroy_bitmap(icon);
 }
 

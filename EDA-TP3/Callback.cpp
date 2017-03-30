@@ -75,7 +75,7 @@ int validacionUsuario(parametros_t p)
 	switch (p.modo)
 	{
 	case MODO1:
-		if (p.init_CantRobots == false)
+		if (p.init_CantRobots == false || p.cantRobots <= 0)
 			return ERROR_CALLBACK;
 		break;
 
