@@ -4,17 +4,17 @@
 
 Dada:
 
-Class myPoint
-
-{
-
- public:
-
- (…)
-
- private: double x; double y;
-
-};
+>Class myPoint
+>
+>{
+>
+> public:
+>
+>(…)
+>
+> private: double x; double y;
+>
+>};
 
 1.  Se pide implementar una función miembro de la clase myPoint double
     getDistanceBetweenPoints(Point p) que calcule la distancia
