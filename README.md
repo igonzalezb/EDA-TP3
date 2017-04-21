@@ -1,4 +1,4 @@
-> ALGORITMOS Y ESTRUCTURAS DE DATOS
+***ALGORITMOS Y ESTRUCTURAS DE DATOS***
 
 **Guía 3. Clases y Objetos, Primeros Pasos**
 
